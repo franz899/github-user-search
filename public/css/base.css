@@ -1,3 +1,124 @@
+
+:root {
+  --color: #212121;
+  --color-alt: #FAFAFA;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --color: #FAFAFA;
+    --color-alt: #212121;
+  }
+}
+
 html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--color);
+  background-color: var(--color-alt);
+}
+
+body {
+  margin: 0 auto;
+  max-width: 70em;
+  padding-bottom: 6rem;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color:  var(--color);
+}
+
+.results {
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 1rem;
+}
+
+.result {
+  border: solid 1px transparent;
+  padding: .6rem;
+  border-radius: .6rem;
+  box-shadow:
+    0 5.3px 12.4px rgba(0, 0, 0, 0.07),
+    0 17.9px 41.5px rgba(0, 0, 0, 0.042),
+    0 80px 186px rgba(0, 0, 0, 0.028)
+  ;
+}
+
+/* @media screen and (prefers-color-scheme) {
+  .result {
+    box-shadow:
+      0 5.3px 12.4px rgba(0, 0, 0, 0.07),
+      0 17.9px 41.5px rgba(0, 0, 0, 0.042),
+      0 80px 186px rgba(0, 0, 0, 0.028)
+    ;
+  }
+} */
+
+.result:hover {
+  border: solid 1px var(--color);
+  /* background-color: rgba(0, 0, 0, .05) */
+}
+
+.result a {
+  display: flex;
+  gap: 1rem;
+}
+
+.result img {
+  height: 5rem;
+  aspect-ratio: auto;
+  border-radius: 50%;
+}
+
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pagination a {
+  border: solid 1px var(--color);
+  border-radius: .6rem;
+  padding: .6rem;
+  min-width: 3rem;
+  display: inline-block;
+  text-align: center;
+ 
+}
+
+input[type="text"] {
+  height: calc(2rem - 6px);
+}
+input[type="submit"] {
+  border: solid 1px var(--color);
+  border-radius: 4px;
+  height: 2rem;
+}
+
+.button {
+  color: var(--color);
+  background-color:  var(--color-alt);
+  cursor: pointer;
+}
+
+.button:hover {
+  color: var(--color-alt);
+  background-color: var(--color);
+}
+
+.results-count {
+  margin: 2rem 0;
+  gap: .5rem;
+  display: flex;
 }

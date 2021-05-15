@@ -1,5 +1,31 @@
 extends layout
 
+block head
+  include includes/rel.pug
+  
 block content
   h1= title
-  p Welcome to #{title}
+  if (query.length === 0)
+    p Start you seach
+  
+  section#search-bar
+    form(action="/", method="get")
+      label(for="username") Username 
+      input#username(type="text", name="username", placeholder="Type a name", required, value=query) 
+      input.button(type="submit", value="search")
+
+  if (results)
+    section#search-results
+      div.results-count
+        if results
+          b results count
+          span= results.totalCount
+      div
+        ul.results
+          each user in results.users
+            li.result
+              a(href=user.profileURL, target="_blank") 
+                img(src=user.avatarURL, alt="avatar")
+                div
+                  h3= user.username
+    include includes/pagination.pug

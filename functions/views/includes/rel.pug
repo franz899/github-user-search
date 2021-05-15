@@ -1,0 +1,4 @@
+if (results)
+  each item in Object.keys(results.pagination)
+    if (results.pagination[item] !== null)
+      link(rel=results.pagination[item].rel, href=`/?username=${query}&page=${results.pagination[item].page}`)

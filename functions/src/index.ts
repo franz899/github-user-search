@@ -4,16 +4,36 @@ import type { HttpError } from "http-errors";
 import createError = require('http-errors');
 import path = require("path");
 import express = require("express");
+import { getUsers } from "./search";
+import type { SearchPage } from "./search";
 const app: Application = express();
 
 app.set('views', path.join(__dirname, "..", 'views'));
 app.set('view engine', 'pug');
 
-app.get("/", (req: Request, res: Response) => {
+const pageTitle = "GitHub User Search";
 
-  res.render("index", {
-    title: "GitHub User Search"
-  });
+app.get("/", async (req: Request, res: Response) => {
+  const username = req.query.username;
+  const pageNumber = Number(req.query.page) || 1;
+
+  let page: SearchPage;
+
+  if (typeof username === "string" && username.length > 0) {
+    const users = await getUsers(String(username), pageNumber);
+    page = {
+      title: pageTitle,
+      query: username,
+      results: users,
+    };
+  } else {
+    page = {
+      title: pageTitle,
+      query: "",
+    };
+  }
+
+  res.render("index", page);
 });
 
 // catch 404 and forward to error handler

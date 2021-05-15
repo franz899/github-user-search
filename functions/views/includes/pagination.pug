@@ -1,0 +1,16 @@
+ul.pagination
+  if (results.pagination.first !== null)
+    li
+      a.button(href=`/?username=${query}&page=${results.pagination.first.page}`) First
+
+  if (results.pagination.prev !== null)
+    li
+      a.button(href=`/?username=${query}&page=${results.pagination.prev.page}`) Prev
+
+  if (results.pagination.next !== null)
+    li
+      a.button(href=`/?username=${query}&page=${results.pagination.next.page}`) Next
+
+  if (results.pagination.last !== null)
+    li
+      a.button(href=`/?username=${query}&page=${results.pagination.last.page}`) Last
