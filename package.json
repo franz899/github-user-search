@@ -1,0 +1,10 @@
+{
+  "name": "github-user-search",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  }
+}

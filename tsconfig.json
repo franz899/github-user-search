@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "ES2019",
+    "outDir": "./public/js",
+    "moduleResolution": "Node"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
