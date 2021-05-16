@@ -37,12 +37,15 @@ describe("get single user", () => {
   });
 });
 
+const AuthToken = "123test123";
+
 function createGetUserSearchByUsername(fetchMock: fetchMock.FetchMockStatic, username: string) {
   fetchMock.get(
     {
       url: `https://api.github.com/search/users?q=${username}&page=1`,
       headers: {
         Accept: "application/vnd.github.v3+json",
+        Authorization: "token " + AuthToken
       },
     },
     {
@@ -85,6 +88,7 @@ function createMockForGetUser(fetchMock: fetchMock.FetchMockStatic, username: st
       url: `https://api.github.com/users/${username}`,
       headers: {
         Accept: "application/vnd.github.v3+json",
+        Authorization: "token " + AuthToken
       },
     },
     {

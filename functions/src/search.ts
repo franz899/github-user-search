@@ -2,6 +2,7 @@ import { getPaginationInfo } from "./pagination";
 import type { PaginationInfo } from "./pagination";
 import type { GitHubSearchUsersResult, GitHubUserInfo } from "./github";
 import "isomorphic-fetch";
+import config from "./config";
 
 export interface SearchPage {
   title: string
@@ -25,11 +26,12 @@ export interface User {
 
 const githubAPIHeaders = {
   "Accept": "application/vnd.github.v3+json",
+  "Authorization": `token ${config.github.authToken}`
 };
 
 export async function getUsers(query: string, page: number = 1): Promise<SearchResults> {
   const response = await fetch(`https://api.github.com/search/users?q=${query}&page=${page}`, {
-    headers: githubAPIHeaders
+    headers: githubAPIHeaders,
   });
   const link = response.headers.get("link") as string;
   const pagination: PaginationInfo = getPaginationInfo(link);
@@ -39,8 +41,6 @@ export async function getUsers(query: string, page: number = 1): Promise<SearchR
   const users = await Promise.all(data.items.map((item) => {
     return getUser(item.login);
   }));
-
-  console.log("Promise.all", users);
 
   return {
     totalCount,
@@ -53,9 +53,7 @@ export async function getUser(username: string): Promise<User> {
   const response = await fetch(`https://api.github.com/users/${username}`, {
     headers: githubAPIHeaders
   });
-  const data: GitHubUserInfo = await response.json();
-  console.log("getUser", username, data);
-  
+  const data: GitHubUserInfo = await response.json()
 
   return {
     username,
