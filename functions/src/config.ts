@@ -14,6 +14,6 @@ const cfg: AppConfig = {
     authToken: `token ${functions.config()["github.auth-token"]}` || "",
   },
   env: process.env.NODE_ENV!,
-}
+};
 
 export default cfg;

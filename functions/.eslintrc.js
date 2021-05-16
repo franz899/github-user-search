@@ -9,7 +9,7 @@ module.exports = {
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "google",
+    // "google",
     "plugin:@typescript-eslint/recommended",
   ],
   parser: "@typescript-eslint/parser",
@@ -26,6 +26,8 @@ module.exports = {
   ],
   rules: {
     "quotes": ["error", "double"],
-    "require-jsdoc": false,
+    "require-jsdoc": 0,
+    "object-curly-spacing": 0,
+    "camelcase": 0,
   },
 };

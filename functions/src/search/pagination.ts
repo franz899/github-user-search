@@ -36,9 +36,9 @@ function byRel(rel: string) {
 }
 
 function createLink(url: string, rel:string): PageInfo {
-  const cleanedURL = url.slice(1, -1)
+  const cleanedURL = url.slice(1, -1);
   return {
     rel,
-    page: Number(new URL(cleanedURL).searchParams.get("page"))
+    page: Number(new URL(cleanedURL).searchParams.get("page")),
   };
 }

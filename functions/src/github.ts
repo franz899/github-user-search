@@ -1,3 +1,5 @@
+/* eslint-ignore file */
+
 export interface GitHubSearchUsersResult {
   total_count: number,
   incomplete_results: boolean,
