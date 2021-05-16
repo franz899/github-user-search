@@ -11,7 +11,7 @@ interface GitHubConfig {
 
 const cfg: AppConfig = {
   github: {
-    authToken: `token ${functions.config()["github.auth-token"]}` || "",
+    authToken: `token ${functions.config().github["auth-token"]}` || "",
   },
   env: process.env.NODE_ENV!,
 };
