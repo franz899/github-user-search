@@ -17,7 +17,10 @@ app.get("/", async (req: Request, res: Response) => {
   const username = req.query.username;
   const pageNumber = Number(req.query.page) || 1;
 
-  let page: SearchPage;
+  let page: SearchPage = {
+    title: pageTitle,
+    query: "",
+  };
 
   if (typeof username === "string" && username.length > 0) {
     const users = await getUsers(String(username), pageNumber);
@@ -25,11 +28,6 @@ app.get("/", async (req: Request, res: Response) => {
       title: pageTitle,
       query: username,
       results: users,
-    };
-  } else {
-    page = {
-      title: pageTitle,
-      query: "",
     };
   }
 

@@ -16,16 +16,11 @@ block content
 
   if (results)
     section#search-results
-      div.results-count
-        if results
-          b results count
-          span= results.totalCount
-      div
-        ul.results
-          each user in results.users
-            li.result
-              a(href=user.profileURL, target="_blank") 
-                img(src=user.avatarURL, alt="avatar")
-                div
-                  h3= user.username
+      if results
+        .results-count
+          span= results.totalCount + " results"
+      ul.results
+        each user in results.users
+          include includes/user-card.pug
+
     include includes/pagination.pug

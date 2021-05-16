@@ -1,0 +1,13 @@
+li.result
+  a.result-container(href=user.profileURL, target="_blank") 
+    .result-header 
+      img.result-image(src=user.avatarURL, alt="avatar")
+      h3.result-title= user.username
+    ul.result-main
+      li.result-info
+        span Followers
+        span= user.followers
+      li.result-info
+        span Member for
+        - const years = user.memberFor > 1 ? "years" : "year";
+        span= user.memberFor + " " + years
