@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 
 interface AppConfig {
+  env: string,
   github: GitHubConfig
 }
 
@@ -10,8 +11,9 @@ interface GitHubConfig {
 
 const cfg: AppConfig = {
   github: {
-    authToken: functions.config()["github.auth-token"] || "123test123",
-  }
+    authToken: `token ${functions.config()["github.auth-token"]}` || "",
+  },
+  env: process.env.NODE_ENV!,
 }
 
 export default cfg;

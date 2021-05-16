@@ -4,13 +4,13 @@ import type { HttpError } from "http-errors";
 import createError = require('http-errors');
 import path = require("path");
 import express = require("express");
-import indexRouter from "./search/index";
+import searchRouter from "./search/index";
 const app: Application = express();
 
-app.set('views', path.join(__dirname, "..", 'views'));
+app.set('views', path.join(process.cwd(), 'views'));
 app.set('view engine', 'pug');
 
-app.use('/', indexRouter);
+app.use('/', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req: Request, res: Response, next: NextFunction) {

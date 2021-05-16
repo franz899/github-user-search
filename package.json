@@ -2,7 +2,8 @@
   "name": "github-user-search",
   "scripts": {
     "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build:watch": "tsc --watch",
+    "dev": "firebase emulators:start"
   },
   "devDependencies": {
     "typescript": "^4.2.4"

@@ -1,5 +1,20 @@
 {
   "extends": "@istanbuljs/nyc-config-typescript",
   "all": true,
-  "check-coverage": true
+  "check-coverage": true,
+  "exclude": [
+    "coverage/**",
+    "packages/*/test{,s}/**",
+    "**/*.d.ts",
+    "test{,s}/**",
+    "test{,-*}.ts",
+    "**/*{.,-}test.ts",
+    "spec{,-*}.ts",
+    "**/*{.,-}spec.ts",
+    "**/__tests__/**",
+    "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
+    "**/jest.config.{js,cjs,mjs,ts}",
+    "**/{karma,rollup,webpack}.config.js",
+    "**/.{eslint,mocha}rc.{js,cjs}"
+  ]
 }

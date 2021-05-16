@@ -24,18 +24,23 @@ export interface User {
   memberFor?: number
 }
 
-const githubAPIHeaders = {
+const githubAPIHeaders: HeadersInit = {
   "Accept": "application/vnd.github.v3+json",
-  "Authorization": `token ${config.github.authToken}`
 };
+
+if (config.env === "production") {
+  githubAPIHeaders.Authorization = `${config.github.authToken}`;
+}
 
 export async function getUsers(query: string, page: number = 1): Promise<SearchResults> {
   const response = await fetch(`https://api.github.com/search/users?q=${query}&page=${page}`, {
     headers: githubAPIHeaders,
   });
+  // console.log("response", response);
   const link = response.headers.get("link") as string;
   const pagination: PaginationInfo = getPaginationInfo(link);
   const data: GitHubSearchUsersResult = await response.json();
+  // console.log("data", data);
 
   const totalCount = data.total_count;
   const users = await Promise.all(data.items.map((item) => {

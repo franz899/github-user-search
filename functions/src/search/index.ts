@@ -4,7 +4,8 @@ const router = express.Router();
 import { getUsers } from "./search";
 import type { SearchPage } from "./search";
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', getIndex);
+async function getIndex(req: Request, res: Response) {
   const username = req.query.username;
   const pageNumber = Number(req.query.page) || 1;
 
@@ -23,6 +24,6 @@ router.get('/', async (req: Request, res: Response) => {
   }
 
   res.render("index", page);
-});
+};
 
 export default router;
