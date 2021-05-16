@@ -1,8 +1,8 @@
 import { getPaginationInfo } from "./pagination";
 import type { PaginationInfo } from "./pagination";
-import type { GitHubSearchUsersResult, GitHubUserInfo } from "./github";
+import type { GitHubSearchUsersResult, GitHubUserInfo } from "../github";
 import "isomorphic-fetch";
-import config from "./config";
+import config from "../config";
 
 export interface SearchPage {
   title: string
