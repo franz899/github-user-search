@@ -21,6 +21,13 @@ describe("get results", () => {
     users.totalCount.should.equal(4);
     users.users.should.have.length(4);
   });
+
+  it("should set page to 1 if not specified", async () => {
+    const query = "example";
+    const users: SearchResults = await getUsers(query);
+    users.totalCount.should.equal(4);
+    users.users.should.have.length(4);
+  });
 });
 
 describe("get single user", () => {
